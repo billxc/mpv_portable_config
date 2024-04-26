@@ -10,3 +10,4 @@
 *.md        text eol=lf
 *.js        text eol=lf
 *.py        text eol=lf
+*.vpy       linguist-language=python
