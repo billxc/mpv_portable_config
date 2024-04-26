@@ -834,6 +834,8 @@ function bind_command(name, callback, flags)
 end
 
 bind_command('toggle-ui', function() Elements:toggle({'timeline', 'controls', 'volume', 'top_bar'}) end)
+bind_command('hide-ui', function() Elements:set_min_visibility(0,{'timeline', 'controls', 'volume', 'top_bar'}) end)
+bind_command('show-ui', function() Elements:set_min_visibility(1,{'timeline', 'controls', 'volume', 'top_bar'}) end)
 bind_command('flash-ui', function() Elements:flash({'timeline', 'controls', 'volume', 'top_bar'}) end)
 bind_command('flash-timeline', function() Elements:flash({'timeline'}) end)
 bind_command('flash-top-bar', function() Elements:flash({'top_bar'}) end)
