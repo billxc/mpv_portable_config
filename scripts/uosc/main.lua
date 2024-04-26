@@ -833,6 +833,31 @@ function bind_command(name, callback, flags)
 	end, flags)
 end
 
+bind_command('mark-pos', function()
+	print("mark-post")
+	local time_pos = mp.get_property_native("time-pos")
+  local time_pos_osd = mp.get_property_osd("time-pos/full")
+  mp.osd_message(time_pos_osd, 1)
+	local file_path = "position.txt"
+	local save_path = mp.command_native({"expand-path", "~~/files/mark-position.txt"})
+	local file = io.open(save_path, "w+")
+	if not file then return msg.error(file, "could not open mark-position.txt") end
+	file:write(tostring(time_pos))
+	file:close()
+end)
+
+bind_command('replay-pos', function()
+	print("replay-pos")
+	local save_path = mp.command_native({"expand-path", "~~/files/mark-position.txt"})
+	local file = io.open(save_path, "r")
+	if not file then return end
+
+	local value = file:read("a")
+	print(value)
+	file:close()
+	mp.set_property_native("time-pos",tonumber(value))
+end)
+
 bind_command('toggle-ui', function() Elements:toggle({'timeline', 'controls', 'volume', 'top_bar'}) end)
 bind_command('hide-ui', function() Elements:set_min_visibility(0,{'timeline', 'controls', 'volume', 'top_bar'}) end)
 bind_command('show-ui', function() Elements:set_min_visibility(1,{'timeline', 'controls', 'volume', 'top_bar'}) end)
