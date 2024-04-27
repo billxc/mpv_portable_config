@@ -15,10 +15,10 @@ clip = video_in
 H_Pre = 2160
 
 ## <True|False> 是否对超过DCI2K分辨率的源进行补帧
-Lt_D2k = False
+Lt_D2k = True
 
 ## <46|415|4151> 使用的模型
-Model = 46
+Model = 4151
 
 ## <True|False> 是否使用外部的填充裁切处理
 Ext_Proc = False
@@ -27,7 +27,7 @@ Ext_Proc = False
 T_Tta = False
 
 ## 整数，Fps_Num/Fps_Den 的值即帧率倍数
-Fps_Num = 2
+Fps_Num = 3
 
 ## 整数
 Fps_Den = 1
@@ -42,7 +42,7 @@ Gpu = 0
 Gpu_T = 2
 
 ## <True|False> 是否使用静态引擎（需要对不同分辨率的源各进行预处理）；动态引擎自适应不同分辨率（QVGA→DCI4K）
-St_Eng = False
+St_Eng = True
 
 ## 整数，约束显存（MiB），静态引擎的最小值为128（动态引擎自动双倍），设为低于此数的值即最大化利用
 Ws_Size = 0
